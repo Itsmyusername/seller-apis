@@ -131,7 +131,27 @@ def create_prices(watch_remnants, offer_ids):
 
 
 def price_conversion(price: str) -> str:
-    """Преобразовать цену. Пример: 5'990.00 руб. -> 5990"""
+    """
+    Convert a price from string format to float.
+
+    Args:
+        price (str): The price be converted. It should be in string format.
+
+    Returns:
+        float: The converted price in float format.
+
+    Raises:
+        ValueError: If the given price is not in a valid format.
+
+    Example:
+        >>> price_conversion("5'990.00 руб.")
+        5990.0
+
+    Example (incorrect usage):
+        >>> price_conversion("5,990.00 руб.")
+        ValueError: Invalid price format. Please use a dot as decimal separator.
+
+    """
     return re.sub("[^0-9]", "", price.split(".")[0])
 
 
