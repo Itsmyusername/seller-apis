@@ -13,12 +13,12 @@ logger = logging.getLogger(__file__)
 def get_product_list(page, campaign_id, access_token):
     """
     Получает список продуктов из магазина на Яндекс.Маркет.
-    
+
     Аргументы:
     - page (str): Токен страницы для списка продуктов.
     - campaign_id (str): Идентификатор кампании на Яндекс.Маркет.
     - access_token (str): Токен доступа к API Яндекс.Маркет.
-    
+
     Возвращает:
     - response_object (dict): Список продуктов в формате JSON.
     """
@@ -43,12 +43,12 @@ def get_product_list(page, campaign_id, access_token):
 def update_stocks(stocks, campaign_id, access_token):
     """
     Обновляет остатки товаров.
-    
+
     Аргументы:
     - stocks (list): Список остатков товаров для обновления.
     - campaign_id (str): Идентификатор кампании на Яндекс.Маркет.
     - access_token (str): Токен доступа к API Яндекс.Маркет.
-    
+
     Возвращает:
     - response_object (dict): Результат обновления остатков товаров в формате JSON.
     """    
@@ -70,12 +70,12 @@ def update_stocks(stocks, campaign_id, access_token):
 def update_price(prices, campaign_id, access_token):
     """
     Обновляет цены товаров.
-    
+
     Аргументы:
     - prices (list): Список цен товаров для обновления.
     - campaign_id (str): Идентификатор кампании на Яндекс.Маркет.
     - access_token (str): Токен доступа к API Яндекс.Маркет.
-    
+
     Возвращает:
     - response_object (dict): Результат обновления цен товаров в формате JSON.
     """    
@@ -97,11 +97,11 @@ def update_price(prices, campaign_id, access_token):
 def get_offer_ids(campaign_id, market_token):
     """
     Получить артикулы товаров Яндекс Маркета.
-    
+
     Аргументы:
     - campaign_id (str): Идентификатор кампании на Яндекс.Маркет.
     - market_token (str): Токен доступа к API Яндекс Маркета.
-    
+
     Возвращает:
     - offer_ids (list): Список артикулов товаров Яндекс Маркета.
     """
@@ -123,12 +123,12 @@ def get_offer_ids(campaign_id, market_token):
 def create_stocks(watch_remnants, offer_ids, warehouse_id):
     """
     Создает данные об остатках товаров.
-    
+
     Аргументы:
     - watch_remnants (list): Список остатков товаров.
     - offer_ids (list): Список артикулов товаров Яндекс Маркета.
     - warehouse_id (str): Идентификатор склада.
-    
+
     Возвращает:
     - stocks (list): Список данных об остатках товаров.
     """
@@ -179,11 +179,11 @@ def create_stocks(watch_remnants, offer_ids, warehouse_id):
 def create_prices(watch_remnants, offer_ids):
     """
     Создает данные о ценах товаров.
-    
+
     Аргументы:
     - watch_remnants (list): Список остатков товаров.
     - offer_ids (list): Список артикулов товаров Яндекс Маркета.
-    
+
     Возвращает:
     - prices (list): Список данных о ценах товаров.
     """

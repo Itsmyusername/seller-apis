@@ -14,15 +14,14 @@ logger = logging.getLogger(__file__)
 def get_product_list(last_id, client_id, seller_token):
     """
     Get the list of products from the Ozon store.
-    
+
     Args:
         last_id (str): The last product ID.
         client_id (str): The client ID.
         seller_token (str): The seller token.
-        
+
     Returns:
         dict: The product list response object.
-    
     """
     url = "https://api-seller.ozon.ru/v2/product/list"
     headers = {
@@ -45,14 +44,13 @@ def get_product_list(last_id, client_id, seller_token):
 def get_offer_ids(client_id, seller_token):
     """
     Get the offer IDs of the products from the Ozon store.
-    
+
     Args:
         client_id (str): The client ID.
         seller_token (str): The seller token.
-        
+
     Returns:
         list: The offer IDs of the products.
-    
     """
     last_id = ""
     product_list = []
@@ -72,15 +70,14 @@ def get_offer_ids(client_id, seller_token):
 def update_price(prices: list, client_id, seller_token):
     """
     Update the prices of the products.
-    
+
     Args:
         prices (list): The list of prices to update.
         client_id (str): The client ID.
         seller_token (str): The seller token.
-        
+
     Returns:
         dict: The update price response object.
-    
     """
     url = "https://api-seller.ozon.ru/v1/product/import/prices"
     headers = {
@@ -96,15 +93,14 @@ def update_price(prices: list, client_id, seller_token):
 def update_stocks(stocks: list, client_id, seller_token):
     """
     Update the stocks of the products.
-    
+
     Args:
         stocks (list): The list of stocks to update.
  client_id (str): The client ID.
         seller_token (str): The seller token.
-        
+
     Returns:
         dict: The update stocks response object.
-    
     """
     url = "https://api-seller.ozon.ru/v1/product/import/stocks"
     headers = {
@@ -120,7 +116,7 @@ def update_stocks(stocks: list, client_id, seller_token):
 def download_stock():
      """
     Download the stock file from the Casio website.
-    
+
     Returns:
         list: The remnants data.
     """
@@ -146,14 +142,13 @@ def download_stock():
 def create_stocks(watch_remnants, offer_ids):
     """
     Create the stock data for the products.
-    
+
     Args:
         watch_remnants (list): The watch remnants data.
         offer_ids (list): The list of offer IDs of the products.
-        
+
     Returns:
         list: The stock data for the products.
-    
     """
     stocks = []
     for watch in watch_remnants:
@@ -183,7 +178,6 @@ def create_prices(watch_remnants, offer_ids):
         
     Returns:
         list: The price data for the products.
-    
     """
     prices = []
     for watch in watch_remnants:
@@ -219,7 +213,6 @@ def price_conversion(price: str) -> str:
     Example (incorrect usage):
         >>> price_conversion("5,990.00 руб.")
         ValueError: Invalid price format. Please use a dot as decimal separator.
-
     """
     return re.sub("[^0-9]", "", price.split(".")[0])
 
@@ -234,7 +227,6 @@ def divide(lst: list, n: int):
         
     Yields:
         list: The divided parts of the list.
-    
     """
     for i in range(0, len(lst), n):
         yield lst[i : i + n]
@@ -251,7 +243,6 @@ async def upload_prices(watch_remnants, client_id, seller_token):
         
     Returns:
         list: The prices of the products.
-    
     """
     offer_ids = get_offer_ids(client_id, seller_token)
     prices = create_prices(watch_remnants, offer_ids)
@@ -271,7 +262,6 @@ async def upload_stocks(watch_remnants, client_id, seller_token):
         
     Returns:
         tuple: A tuple containing the not empty stocks and all stocks.
-    
     """
     offer_ids = get_offer_ids(client_id, seller_token)
     stocks = create_stocks(watch_remnants, offer_ids)
